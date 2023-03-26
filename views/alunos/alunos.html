@@ -1,0 +1,83 @@
+<div ng-include="'views/subtemplate/menu.html'"></div>
+<!-- [ Main Content ] start -->
+<div class="pcoded-main-container">
+    <div class="pcoded-content">
+        <!-- [ breadcrumb ] start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">Alunos</h5>
+                        </div>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/#!/dashboard"><i class="feather icon-home"></i></a></li>
+                            <li class="breadcrumb-item"><a href="javascript:;">Alunos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] start -->
+        <div class="row">
+            <!-- [ breadcrumb ] end -->
+            <!-- [ stiped-table ] start -->
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Alunos</h5>
+                    </div>
+                    <div class="card-body table-border-style">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>Whatsapp</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="aluno in alunos.data">
+                                        <td>{{aluno.nome}}</td>
+                                        <td>{{aluno.whatsapp}}</td>
+                                        <td>
+                                            <a href="javascript:;" class="m-r-10" ng-click="visualizar(aluno.id)">
+                                                <i class="feather icon-eye"></i>
+                                            </a>
+                                            <a href="javascript:;" ng-click="registro(aluno.id)">
+                                                <i class="fa fa-clock"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- [ stiped-table ] end -->
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-footer text-center">
+                        <nav>
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item" ng-class="paginacao.current_page == 1 ? 'disabled' : ''">
+                                    <a class="page-link" href="javascript:;" ng-click="paginacao.current_page == 1 ? '' : paginaAnterior()" tabindex="-1">Anterior</a>
+                                </li>
+                                <li class="page-item" ng-repeat="item in getSubArray(1)" ng-class="item == paginacao.current_page ? 'active' : ''">
+                                    <a class="page-link" href="javascript:;" ng-click="item == paginacao.current_page ? '' : pagina(item)">{{item}}</a>
+                                </li>
+                                <li class="page-item" ng-class="paginacao.current_page == paginacao.last_page ? 'disabled' : ''">
+                                    <a class="page-link" href="javascript:;" ng-click="paginacao.current_page == paginacao.last_page ? '' : proximaPagina()">Próximo</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
